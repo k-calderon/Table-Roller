@@ -72,7 +72,9 @@ var test = function(roll) {
                         maxToggle = !maxToggle;
                     };
                 }
-                if ((parseInt(min)) <= roll <= (parseInt(max))) {
+                min = parseInt(min);
+                max = parseInt(max);
+                if (min <= roll && roll <= max) {
                     console.log(sampleTable[key]);
                 };
                 //target.innerHTML += "<p>" + sampleTable[key] + "</p>";
