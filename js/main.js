@@ -1,13 +1,11 @@
 "use strict";
 
 function randIntBetween(min, max) {
-    if(min > max) {
-        var tempMin = max;
-        max = min;
-        min = tempMin;
-    };
     /* return a random number between the min and max. The min 
     and the max do not have to start with 1 */
+    if(min > max) {
+        return Math.floor(Math.random()*(min-max+1)+max)
+    };    
     return Math.floor(Math.random()*(max-min+1)+min);
 };
 var roll = {
@@ -40,20 +38,44 @@ var roll = {
     }
 };
 var handlers = {
-    
+    getRange: function() {        
+        var target = document.getElementById("target")
+        target.innerHTML = "";
+        for (var key in sampleTable) {
+            if (sampleTable.hasOwnProperty(key)) {
+                if (key !== "meta") {
+                    console.log(sampleTable[key]);
+                    target.innerHTML += "<p>" + sampleTable[key] + "</p>";
+                };
+            };
+        };            
+    }
 };
 var render = {
     result : function() {}
 };
-var test = function() {
+var test = function(roll) {
     // var table = JSON.parse()
     var target = document.getElementById("target")
     target.innerHTML = "";
     for (var key in sampleTable) {
         if (sampleTable.hasOwnProperty(key)) {
             if (key !== "meta") {
-                console.log(sampleTable[key]);
-                target.innerHTML += "<p>" + sampleTable[key] + "</p>";
+                var min = "",
+                    max = "",
+                    result = "",
+                    maxToggle = false;
+                for (var i= 0; i < key.length; i++) {                    
+                    if (key[i] !== "-") {
+                        !maxToggle ? min += key[i] : max += key[i];
+                    } else {
+                        maxToggle = !maxToggle;
+                    };
+                }
+                if ((parseInt(min)) <= roll <= (parseInt(max))) {
+                    console.log(sampleTable[key]);
+                };
+                //target.innerHTML += "<p>" + sampleTable[key] + "</p>";
             };
         };
     };    
@@ -64,4 +86,4 @@ var test = function() {
     console.log("init fired");
 }();*/
 
-({console.log("anonymous function fired!")})()
+/*({console.log("anonymous function fired!")})()*/
