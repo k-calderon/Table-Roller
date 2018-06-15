@@ -1,5 +1,6 @@
 "use strict";
 
+var testJSON = JSON.parse(sampleTable);
 function randIntBetween(min, max) {
     /* return a random number between the min and max. The min 
     and the max do not have to start with 1 */
@@ -56,36 +57,53 @@ var render = {
 };
 var test = function(roll) {
     // var table = JSON.parse()
-    var target = document.getElementById("target")
+    var target = document.getElementById("target"),
+        minRange = 0,
+        maxRange = 0,
+        parseKeyValue = function (key) {
+            var keyMin = "",
+                keyMax = "",                
+                keyMaxToggle = false;
+            for (var i= 0; i < key.length; i++) {                    
+                if (key[i] !== "-") {
+                    !keyMaxToggle ? keyMin += key[i] : keyMax += key[i];
+                } else {
+                    keyMaxToggle = !keyMaxToggle;
+                };
+            };
+            keyMin = parseInt(keyMin);
+            keyMax = parseInt(keyMax);
+            var result = [keyMin, keyMax];
+            return result
+        };
     target.innerHTML = "";
     for (var key in sampleTable) {
         if (sampleTable.hasOwnProperty(key)) {
             if (key !== "meta") {
-                var min = "",
-                    max = "",
-                    result = "",
-                    maxToggle = false;
-                for (var i= 0; i < key.length; i++) {                    
-                    if (key[i] !== "-") {
-                        !maxToggle ? min += key[i] : max += key[i];
-                    } else {
-                        maxToggle = !maxToggle;
-                    };
-                }
-                min = parseInt(min);
-                max = parseInt(max);
-                if (min <= roll && roll <= max) {
-                    console.log(sampleTable[key]);
-                };
-                //target.innerHTML += "<p>" + sampleTable[key] + "</p>";
+                /* BEGIN broken section */
+                var test = sampleTable[key],
+                    test2 = sampleTable[1], //sampleTable[1] returns undefined
+                    test3 = sampleTable[sampleTable.length]; // sampleTable[sampleTable.length] returns undefined
+                if (sampleTable[key] === sampleTable[1]) {
+                    minRange = min;
+                } else if (sampleTable[key] === sampleTable[sampleTable.length]){
+                    maxRange = max;
+                };                     
+                /* END broken section */   
             };
         };
-    };    
-    // target.html = "<p>Testing sample-table. Value for key 1 is "
+    };
+    var roll = randIntBetween(minRange, maxRange);
+    for(var key in sampleTable) {
+        if (key !== "meta"){
+            var keyRange = parseKeyValue(key);
+            if (keyRange[0] <= roll && roll <= keyRange[1]) {
+                console.log(roll);
+                console.log(sampleTable[key]);
+                target.innerHTML = "";
+                target.innerHTML += "<p>" + sampleTable[key] + "</p>";
+            };
+        };
+    };
+    
 };
-
-/*function init (){
-    console.log("init fired");
-}();*/
-
-/*({console.log("anonymous function fired!")})()*/
