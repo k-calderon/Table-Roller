@@ -47,13 +47,12 @@ var roll = {
     }
 };
 
-var rollOnTable = function(tableData, roll) {
-    var rollIsInRange,
-    tableRangeMin,
-    tableRangeMax,
-    tableType;
-    //Handle validating the table here
-    if (tableData) {
+function validateTable(tableData) {
+    var tableDataValid = false,
+        metaValid = false,
+        tableValid = false,
+        tableType;
+    if (tableData) {        
         log("Table data found.")
         log("Validation not fully supported at this time")        
         if (tableData.meta) {
@@ -85,6 +84,24 @@ var rollOnTable = function(tableData, roll) {
     } else {
         log("No table to handle");
     };   
+    
+    // ***To-do: further validation
+
+    if (metaValid && tableValid) {
+        tableDataValid = true;
+    }
+    return tableDataValid;
+}
+
+function rollOnTable(tableData, roll) {
+    var rollIsInRange,
+    tableRangeMin,
+    tableRangeMax,
+    tableType;
+    //Handle validating the table here
+    if (tableData) {
+        validateTable(tableData);
+    };
     
     // Beyond this point assumes a valid table
 
