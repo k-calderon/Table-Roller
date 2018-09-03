@@ -3,7 +3,7 @@
 function log (msg) {
     console.log(msg);
 };
-function randIntBetween(min, max) {
+var randIntBetween = function (min, max) {
     /* return a random number between the min and max. The min 
     and the max do not have to start with 1 */
     if(min > max) {
@@ -133,6 +133,16 @@ function rollOnTable(tableData, roll) {
     
     // ***start comparing the roll to the table here***
     // DO THIS NEXT DO THIS NEXT DO THIS NEXT DO THIS NEXT
+    roll = randIntBetween(tableRangeMin, tableRangeMax);
+    log ("Roll: " + roll);
+    (function (table, roll) {
+        for (var i = 0; i < table.length; i += 2) {
+            if (roll >= table[i][0] && roll <= table[i][1]) {
+                log("Result: " + table[i+1]);
+            }
+        }
+      }(tableData.table, roll));
+      
 };
 
 
