@@ -1,4 +1,4 @@
-var sampleTable = {
+const SAMPLESIMPLETABLE = {
     "meta":{
         "name":"Sample Table",
         "id":"sampleTable",
@@ -16,4 +16,18 @@ var sampleTable = {
         [16,20],
         "Result 4"        
     ]
+};
+
+const SAMPLERANGETABLE = {
+    "1-5": "a",
+    "6-10": "b",
+    "11-15": "c",
+    "16-20": "d"
+};
+
+const SAMPLEPROBABILITYTABLE = {
+    "0": [5, "a"],
+    "1": [5, "b"],
+    "2": [2, "c"],
+    "3": [3, "d"]
 };

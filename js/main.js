@@ -3,7 +3,8 @@
 function log (msg) {
     console.log(msg);
 };
-var randIntBetween = function (min, max) {
+
+let randIntBetween = function (min, max) {
     /* return a random number between the min and max. The min 
     and the max do not have to start with 1 */
     if(min > max) {
@@ -12,7 +13,7 @@ var randIntBetween = function (min, max) {
     return Math.floor(Math.random()*(max-min+1)+min);
 };
 
-var roll = {
+let roll = {
     /* Usage examples:
         roll.d4();
         roll.d20();
