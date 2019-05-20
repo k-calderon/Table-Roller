@@ -1,15 +1,15 @@
 "use strict";
 
-// var loadTime = new Date.now() // this is busted
+var loadTime = Date.now()
 let utils = {
   helloWorld: function() {
     console.log("hello world! this is a utility function.");
   },
   log: function(msg) {
-    // let now = new Date.now(); // this is busted
-    // let timer = now - loadTime;
-    // console.log(loadTime + "ms > "+ msg);
-    console.log(msg);
+    let now = Date.now();
+    let timer = now - loadTime;
+    console.log(loadTime + "ms > "+ msg);
+    // console.log(msg);
   },
   isObject: function(obj) {
     if (!Array.isArray(obj) && typeof obj === "object") {
