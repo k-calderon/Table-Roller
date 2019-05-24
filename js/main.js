@@ -1,14 +1,13 @@
 "use strict";
 
-var loadTime = Date.now()
+var startTime = Date.now()
 let utils = {
   helloWorld: function() {
     console.log("hello world! this is a utility function.");
   },
   log: function(msg) {
-    let now = Date.now();
-    let timer = now - loadTime;
-    console.log(loadTime + "ms > "+ msg);
+    let now = Date.now().valueOf();
+    console.log(now - startTime + "ms > "+ msg);
     // console.log(msg);
   },
   isObject: function(obj) {
