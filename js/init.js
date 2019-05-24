@@ -17,3 +17,5 @@ const init = {
     }
   }
 };
+
+init.all()
