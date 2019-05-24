@@ -1,13 +1,12 @@
 "use strict";
 
-var startTime = Date.now()
 let utils = {
   helloWorld: function() {
     console.log("hello world! this is a utility function.");
   },
   log: function(msg) {
     let now = Date.now().valueOf();
-    console.log(now - startTime + "ms > "+ msg);
+    console.log(now - startTime + "ms > " + msg);
     // console.log(msg);
   },
   isObject: function(obj) {
