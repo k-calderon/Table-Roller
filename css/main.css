@@ -1,7 +1,13 @@
 .result-container{
     display: grid;
+    grid-template-columns: 500px;
 }
 .result-row{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto 3fr 1fr;
+}
+
+.button{
+    text-align: center;
+    background-color: lightblue;
 }
